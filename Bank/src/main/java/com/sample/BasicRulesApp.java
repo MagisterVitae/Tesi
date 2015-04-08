@@ -16,9 +16,17 @@ public class BasicRulesApp {
         	KieSession kSession = kContainer.newKieSession("ksession-rules");
 
             // go !
-        	Account account = new Account();
-			account.setBalance(50);            
-            kSession.insert(account);
+        	Account a1 = new Account();
+        	Account a2 = new Account();
+        	Account a3 = new Account();
+			a1.setBalance(50);
+			a2.setBalance(150);  
+			a3.setBalance(80);  
+			
+            kSession.insert(a1);
+            kSession.insert(a2);
+            kSession.insert(a3);
+
             kSession.fireAllRules();
             
         } catch (Throwable t) {

@@ -1,0 +1,27 @@
+//created on: 4-apr-2015
+package com.sample
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "BasicRule"
+    when
+        $a: Account( balance < 100 )
+    then
+        System.out.println("Account \'" + $a.getUuid() + "\' balance is less than 100");
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+    then
+        //actions
+
+end

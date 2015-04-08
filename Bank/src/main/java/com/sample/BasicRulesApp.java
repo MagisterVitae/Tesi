@@ -21,6 +21,7 @@ public class BasicRulesApp {
             kSession.insert(account);
             kSession.fireAllRules();
             
+            System.out.println("testing branch");
         } catch (Throwable t) {
             t.printStackTrace();
         }

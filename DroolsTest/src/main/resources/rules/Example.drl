@@ -1,0 +1,181 @@
+//created on: 3-apr-2015
+package com.sample
+
+//list any import classes here.
+import com.sample.Person;
+import com.sample.Mail;
+
+
+
+//declare any global variables here
+declare Pair
+	first: Person
+	second: Person
+end
+
+
+
+rule "Regola: Simple 1"
+
+    when
+        $m: Mail()
+    then
+        System.out.println("S1-Mail: " + $m);
+
+end
+
+rule "Regola: Simple 2"
+    //include attributes such as "salience" here...
+    when
+        $p: Person()
+    then
+       System.out.println("S2-Person: " + $p);
+
+end
+
+rule "Regola: Simple 3"
+	when
+		$p: Person(name=="Carl", age<10 || age>=18 && age <=35)
+	then
+		System.out.println("S3-Person: " + $p);
+end
+
+rule "Regola: Join 1"
+	when
+		$p1: Person()
+		$p2: Person()
+	then
+		System.out.println("J1: " + $p1 + $p2);
+end
+
+rule "Regola: Join 2"
+	when
+		$p1: Person()
+		$p2: Person(this != $p1)
+	then 
+		System.out.println("J2: " + $p1 + $p2);
+end
+
+rule "Regola: Join 3"
+	when
+		$p1: Person($n:name)
+		$p2: Person(this!=$p1, name==$n)
+	then
+		System.out.println("J3: " + $p1 + $p2);
+end
+
+rule "Regola: Join 5"
+	when
+		$p: Person(age>=20, name=="Daisy")
+		$pp: Person(this == $p)
+		$m: Mail(sender==$p, recipient==$pp, $b:body)
+	then
+		System.out.println("J5.body: " + $b);
+end
+
+rule "Regola: Join 5 dot notation"
+	when
+		Mail($p:sender, sender.name=="Daisy", sender.age>=20, recipient==$p, $b:body.toString())
+	then
+		System.out.println("J5.body: " + $b);
+end
+
+rule "Regola: QE1"
+	when
+		$p: Person($n:name)
+		exists Mail(recipient==$p)
+	then
+		System.out.println("QE1.recipient: " + $n + " ha ricevuto mail.");
+end
+
+rule "Regola: QE2"
+	when
+		$p: Person($n:name)
+		not Mail(recipient==$p)
+	then
+		System.out.println("QE2.recipient: " + $n + " non ha ricevuto mail.");
+end
+		
+rule "Regola: QE3"
+	when		
+		$p: Person($n:name)		
+		forall (
+			Mail($s:sender, recipient==$p)
+			Person(this==$s, name=="Carl")
+			)
+	then
+		System.out.println("QE3: " + $n + " ha ricevuto solo mail da Carl");
+end
+		
+rule "Regola: CdR1"
+	when
+		$p:Pair()
+	then
+		System.out.println("CdR1 Pair: " + $p);
+end
+		
+rule "Regola: CdR2"
+	when
+		$p1: Person()
+		$p2: Person()
+	then
+		Pair p = new Pair($p1,$p2);
+		//p.setFirst($p1);
+		//p.setSecond($p2);
+		insert(p);
+		System.out.println("CdR2: Coppia inserita.");
+end
+
+rule "Regola: CdR3"
+	when
+		$p1:Person()
+		$p2:Person(this!=$p1)
+		not Pair(first==$p2, second==$p1)
+	then
+		Pair p = new Pair($p1, $p2);
+		insert(p);
+		System.out.println("CdR3: Coppia inserita.");
+end
+		
+rule "Regola FA: From1"
+	when
+		$parent: Person($children: children)
+		$child: Person() from $children
+	then
+		System.out.println("FA:From1: " + $parent + " è genitore di " + $child);
+end
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

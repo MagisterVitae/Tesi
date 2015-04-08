@@ -1,9 +1,12 @@
 package com.sample;
 
 import java.util.Date;
+import java.io.Serializable;
 
-public class Account {
+public class Account implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	long uuid;
 	long number;
 	String name;

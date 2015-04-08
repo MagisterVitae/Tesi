@@ -1,5 +1,7 @@
 package com.sample;
 
+import java.sql.ResultSet;
+
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -28,6 +30,17 @@ public class BasicRulesApp {
             kSession.insert(a3);
 
             kSession.fireAllRules();
+            
+            //Database test
+            DataService ds = new DataService("droolsdb", "password", "provadrools");
+            
+//            ds.qUpdate("INSERT INTO test(testo) VALUES ('prova6')");
+//            ResultSet rs = ds.qSelect("SELECT * FROM test");
+//            while(rs.next()){
+//            	String t = rs.getString("testo");
+//            	System.out.println(t);
+//            }
+            ds.closeConn();
             
         } catch (Throwable t) {
             t.printStackTrace();

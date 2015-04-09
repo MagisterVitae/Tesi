@@ -19,6 +19,8 @@ public class Account implements Serializable{
 	String status;
 	Customer owner;
 	
+	String porcodio;
+	
 	public Account(long uuid, long number, String name, long balance,
 			double currency, Date startDate, Date endDate, String type,
 			double interestRate, String status) {

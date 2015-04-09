@@ -19,11 +19,9 @@ public class Account implements Serializable{
 	String status;
 	Customer owner;
 	
-<<<<<<< HEAD
 	String porcodio;
-=======
+	
 	String mannaggiaddio;
->>>>>>> refs/heads/Test
 	
 	public Account(long uuid, long number, String name, long balance,
 			double currency, Date startDate, Date endDate, String type,

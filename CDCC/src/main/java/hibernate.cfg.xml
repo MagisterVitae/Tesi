@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="CDCCSessionFactory">
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">password</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost/cdcc</property>
+  <property name="hibernate.connection.username">cdcc</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="hibernate.hbm2ddl.auto">create</property>
+  <mapping class="com.cdcc.Autore" resource="com/cdcc/Autore.hbm.xml"/>
+  <mapping class="com.cdcc.Chiave" resource="com/cdcc/Chiave.hbm.xml"/>
+  <mapping class="com.cdcc.Nota" resource="com/cdcc/Nota.hbm.xml"/>
+  <mapping class="com.cdcc.Parametro" resource="com/cdcc/Parametro.hbm.xml"/>
+  <mapping class="com.cdcc.Paziente" resource="com/cdcc/Paziente.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

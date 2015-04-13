@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-apr-2015 17.22.55 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.cdcc.Nota" table="NOTA">
+  <id name="id" type="long">
+   <column name="ID"/>
+   <generator class="identity"/>
+  </id>
+  <many-to-one class="com.cdcc.Paziente" fetch="join" name="paziente">
+   <column name="PAZIENTE"/>
+  </many-to-one>
+  <many-to-one class="com.cdcc.Autore" fetch="join" name="autore">
+   <column name="AUTORE"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="tipo">
+   <column name="TIPO"/>
+   <type name="org.hibernate.type.EnumType">
+    <param name="type">12</param>
+    <param name="enumClass">com.cdcc.Nota$Tipo</param>
+   </type>
+  </property>
+  <property generated="never" lazy="false" name="testo" type="java.lang.String">
+   <column name="TESTO"/>
+  </property>
+  <property generated="never" lazy="false" name="data" type="java.util.Date">
+   <column name="DATA"/>
+  </property>
+ </class>
+</hibernate-mapping>

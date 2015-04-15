@@ -14,5 +14,6 @@
   <mapping class="com.cdcc.Nota" resource="com/cdcc/Nota.hbm.xml"/>
   <mapping class="com.cdcc.Parametro" resource="com/cdcc/Parametro.hbm.xml"/>
   <mapping class="com.cdcc.Paziente" resource="com/cdcc/Paziente.hbm.xml"/>
+  <mapping class="com.cdcc.Valore" resource="com/cdcc/Valore.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-apr-2015 15.15.37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.cdcc.Valore" table="VALORE">
+  <id name="id" type="long">
+   <column name="ID"/>
+   <generator class="identity"/>
+  </id>
+	<joined-subclass name="com.cdcc.ValoreIntero" extends="com.cdcc.Valore"
+		table="VALOREINTERO" lazy="false">
+		<key>
+			<column name="ID" />
+		</key>
+		<property name="Val" type="int">
+			<column name="VAL" />
+		</property>
+	</joined-subclass>
+	<joined-subclass name="com.cdcc.ValoreReale" extends="com.cdcc.Valore" table="VALOREREALE" lazy="false">
+        <key>
+            <column name="ID" />
+        </key>
+        <property name="val" type="long">
+            <column name="VAL" />
+        </property>
+    </joined-subclass>
+    <joined-subclass name="com.cdcc.ValoreStringa" extends="com.cdcc.Valore" table="VALORESTRINGA" lazy="false">
+        <key>
+            <column name="ID" />
+        </key>
+        <property name="val" type="java.lang.String">
+            <column name="VAL" />
+        </property>
+    </joined-subclass>
+ </class>
+</hibernate-mapping>

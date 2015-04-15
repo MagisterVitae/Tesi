@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 15-apr-2015 11.33.52 by Hibernate Tools 3.4.0.CR1 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-apr-2015 14.45.18 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
- <class name="com.cdcc.Parametro" table="PARAMETRO">
-  <id name="id" type="long">
-   <column name="ID"/>
-   <generator class="identity"/>
-  </id>
-  <many-to-one class="com.cdcc.Nota" fetch="join" name="nota">
-   <column name="NOTA"/>
-  </many-to-one>
-  <many-to-one class="com.cdcc.Chiave" fetch="join" name="chiave">
-   <column name="CHIAVE"/>
-  </many-to-one>
-  <property generated="never" lazy="false" name="valore" type="java.lang.String">
-   <column name="VALORE"/>
-  </property>
- </class>
+    <class name="com.cdcc.Parametro" table="PARAMETRO">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="nota" class="com.cdcc.Nota" fetch="join">
+            <column name="NOTA" />
+        </many-to-one>
+        <many-to-one name="chiave" class="com.cdcc.Chiave" fetch="join">
+            <column name="CHIAVE" />
+        </many-to-one>
+        <many-to-one name="valore" class="com.cdcc.Valore" fetch="join">
+            <column name="VALORE" />
+        </many-to-one>
+    </class>
 </hibernate-mapping>

@@ -15,14 +15,15 @@ public class Parametro {
 	private Nota nota;
 	@ManyToOne
 	private Chiave chiave;
-	private String valore;
+	@ManyToOne
+	private Valore valore;
 	
 	public Parametro() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Parametro(Nota nota, Chiave chiave, String valore) {
+	
+	public Parametro(Nota nota, Chiave chiave, Valore valore) {
 		super();
 		this.nota = nota;
 		this.chiave = chiave;
@@ -53,11 +54,11 @@ public class Parametro {
 		this.chiave = chiave;
 	}
 
-	public String getValore() {
+	public Valore getValore() {
 		return valore;
 	}
 
-	public void setValore(String valore) {
+	public void setValore(Valore valore) {
 		this.valore = valore;
 	}
 
